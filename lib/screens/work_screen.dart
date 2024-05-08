@@ -26,6 +26,7 @@ class _WorkScreenState extends State<WorkScreen> {
               },
               child: ListTile(
                 title: Text("${task[index]}"),
+                //subtitle: Text(data),
                 trailing: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
@@ -78,6 +79,7 @@ class _WorkScreenState extends State<WorkScreen> {
                         ),
                         Row(
                           children: [
+                            //close button
                             TextButton(
                               onPressed: () {
                                 Navigator.of(context).pop();
@@ -86,10 +88,14 @@ class _WorkScreenState extends State<WorkScreen> {
                               },
                               child: const Text("close"),
                             ),
+                            //Add button
                             TextButton(
                               child: const Text("Add"),
                               onPressed: () {
-                                task.add(nameController.text);
+                                task.add({
+                                  nameController.text,
+                                  descriptionController.text
+                                });
                                 nameController.clear();
                                 descriptionController.clear();
                                 Navigator.of(context).pop();
